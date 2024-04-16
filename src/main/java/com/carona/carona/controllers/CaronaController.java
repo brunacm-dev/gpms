@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/caronas")
 public class CaronaController {
 
-    @GetMapping("/pedir")
+    @PostMapping("/pedir")
     public String pedirCarona() {
         return "Pedir carona";
     }
 
-    @GetMapping("/oferecer")
+    @PostMapping("/oferecer")
     public String oferecerCarona() {
         return "Oferecer carona";
     }
@@ -23,8 +23,13 @@ public class CaronaController {
         return "Listar caronas";
     }
 
-    @GetMapping("/perfil")
+    @PostMapping("/perfil")
     public String verPerfil() {
         return "Ver perfil";
+    }
+    
+    @PostMapping("/criar/perfil")
+    public String verPerfil() {
+        return "Criar perfil";
     }
 }
