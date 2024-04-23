@@ -1,0 +1,90 @@
+:root {
+  --bs-primary: #0F62AC;
+  --bs-secondary: #6C757D;
+  --bs-success: #198754;
+  --bs-danger: #DC3545;
+  --bs-warning: #FFC107;
+  --bs-info: #0DCAF0;
+  --bs-light: #F8F9FA;
+  --bs-dark: #212529;
+  --bs-white: #fff;
+  --bs-black: #000;
+  --bs-gray: #6C757D;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+margin:0;
+padding:0;
+}
+
+/* Login Page */
+
+.login-container {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.left-side {
+  background-color: var(--bs-primary);
+  color: #fff;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-side h2 {
+  text-align: center;
+  font-size: 3.5rem;
+}
+
+/* .bi-car-front {
+  font-size: 5rem;
+  text-align: center;
+} */
+
+.right-side {
+    background-color: var(--bs-light);
+    color: var(--bs-dark);
+    padding: 20px;
+    height: 100vh;
+}
+
+.right-side h2 {
+  text-align: center;
+  padding-top: 50%;
+}
+
+.btn-login {
+  background-color: var(--bs-primary);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: var(--bs-gray);
+  color: #fff
+} 
+
+/* Profile Page */
+
+.home-title {
+  text-align: center;
+  background-color: var(--bs-primary);
+  color: #fff;
+}
