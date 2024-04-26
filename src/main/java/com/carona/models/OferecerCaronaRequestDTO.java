@@ -1,4 +1,4 @@
-
+package com.carona.models;
 
 import lombok.Getter;
 import lombok.Setter;
