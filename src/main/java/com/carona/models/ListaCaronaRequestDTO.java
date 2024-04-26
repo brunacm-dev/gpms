@@ -1,9 +1,10 @@
+
 package com.carona.models;
+
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter @Setter
 public class ListaCaronaRequestDTO {
@@ -18,5 +19,4 @@ public class ListaCaronaRequestDTO {
     private boolean chatAberto;
     private boolean viagemCancelada;
     private boolean aceiteManual;
-    
 }
