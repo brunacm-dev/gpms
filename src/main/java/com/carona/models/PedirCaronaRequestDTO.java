@@ -1,4 +1,4 @@
-package com.carona.carona.models;
+package com.carona.models;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class PedirCaronaRequestDTO {
     private String localPartida;
     private String destino;
-    private LocalDateTime dataHoraViagem;
+    private String dataHoraViagem;
     private int quantidadePassageiros;
     private boolean embarqueImediato;
     

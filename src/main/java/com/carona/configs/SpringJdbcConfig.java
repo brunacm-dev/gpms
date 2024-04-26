@@ -1,30 +1,28 @@
-package com.carona.carona.configs;
+package com.carona.configs;
 
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-
 @Configuration
 public class SpringJdbcConfig {
-        	
-	/*@Value("${database.bspid001.driver}")
-	private String driver;
 
-	@Value("${database.bspid001.connectionString}")
-	private String connectionString;
+    @Value("${database.eventos.driver}")
+    private String driver;
 
-	@Value("${DATABASE_USERNAME}")
-	private String username;
+    @Value("${database.eventos.connectionString}")
+    private String connectionString;
 
-	@Value("${DATABASE_PASSWORD}")
-	private String password;
-	
-	@Bean
+    @Value("${database.eventos.username}")
+    private String username;
+
+    @Value("${database.eventos.password}")
+    private String password;
+
+    @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(driver);
@@ -35,9 +33,8 @@ public class SpringJdbcConfig {
         return dataSource;
     }
 
-	@Bean
-    public JdbcTemplate jdbcTemplate(DataSource dataSource)
-    {
+    @Bean
+    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
         return new JdbcTemplate(dataSource);
-    }*/
+    }
 }

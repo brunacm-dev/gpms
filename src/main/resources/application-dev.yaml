@@ -1,0 +1,12 @@
+build:
+  version: "@project.version@"
+
+database:
+  eventos:
+    driver: com.mysql.cj.jdbc.Driver
+    connectionString: jdbc:mysql://${database.eventos.database_server}:${database.eventos.database_port}/eventos?useSSL=false&serverTimezone=UTC
+    username: root
+    password: Root@1234
+    autocommit: true
+    database_server: localhost
+    database_port: 3306
