@@ -11,7 +11,7 @@ import com.carona.logins.UsuarioLoginDTO;
 @Repository
 public class AutenticacaoRepository {
 
-    private static final String QUERY_FIND_BY_EMAIL = "SELECT * FROM Usuario WHERE email = ?";
+    private static final String QUERY_FIND_BY_EMAIL = "SELECT * FROM usuarios WHERE email = ?";
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

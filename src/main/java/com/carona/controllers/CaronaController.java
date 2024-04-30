@@ -39,13 +39,5 @@ public class CaronaController {
         return "Listar caronas";
     }
 
-    @PostMapping("/perfil")
-    public String verPerfil() {
-        return "Ver perfil";
-    }
-    
-    @PostMapping("/criar/perfil")
-    public String criarString() {
-        return "Criar perfil";
-    }
+   
 }

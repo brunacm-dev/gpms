@@ -12,7 +12,11 @@ springdoc:
   api-docs:
     path: /v1/swagger.json
     enabled: true
-    
+
+server:
+  servlet:
+    context-path: /caronaUff
+       
 spring:
    jackson:
       default-property-inclusion: NON_NULL
