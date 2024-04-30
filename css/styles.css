@@ -63,8 +63,8 @@ body {
   padding-top: 50%;
 }
 
-.btn-login {
-  background-color: var(--bs-primary);
+.btn-login, .btn-form {
+  background-color: var(--bs-gray);
   color: var(--bs-light);
   border: none;
   padding: 10px 20px;
@@ -72,8 +72,8 @@ body {
   cursor: pointer;
 }
 
-.btn-login:hover {
-  background-color: var(--bs-gray);
+.btn-login:hover, .btn-form:hover {
+  background-color: var(--bs-primary);
   color: var(--bs-light);
 }
 
@@ -102,11 +102,17 @@ body {
 
 .dropdown-menu .dropdown-item {
   margin-bottom: 10px;
+  color: var(--bs-light);
+}
+.dropdown-menu .dropdown-item:hover {
+  margin-bottom: 10px;
+  color: var(--bs-dark);
+  background-color: #dbeeff
 }
 
 /** Profile Page */
 
-.card.profile {
+.card.profile, .card.title {
   padding: 20px;
   margin: 20px;
 }
@@ -135,7 +141,7 @@ body {
 .btn-card {
   background-color: #1a4d75;
   border: 2px solid var(--bs-white);
-  padding: 40px 60px;
+  padding: 20px 30px;
   margin: 20px;
   cursor: pointer;
   font-size: 1.25rem;
