@@ -1,11 +1,10 @@
-package com.carona.models;
+package com.carona.models.requests;
 
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDateTime;
-import java.util.List;
 
 import com.carona.logins.UsuarioLoginDTO;
+import com.carona.models.Carro;
 
 @Getter @Setter
 public class AtualizarUsuarioRequestDTO extends UsuarioLoginDTO{

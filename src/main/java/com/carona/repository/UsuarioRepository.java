@@ -4,6 +4,7 @@ import java.sql.Types;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
@@ -11,6 +12,9 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Repository;
+
+import com.carona.mappers.UsuarioCarroRowMapper;
+import com.carona.models.Usuario;
 
 @Repository
 public class UsuarioRepository {
@@ -50,5 +54,15 @@ public class UsuarioRepository {
 	    	    .addValue("p_cnh", cnh);
 
 	    	call.execute(params);
+	}
+
+	public Usuario carregarUsuario(String email){
+		String sql = "SELECT * FROM usuarios WHERE email = ?";
+
+		try {
+			return jdbcTemplate.queryForObject(sql, new UsuarioCarroRowMapper(), new Object[] { email });
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
 	}
 }

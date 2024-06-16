@@ -1,4 +1,6 @@
-package com.carona.models;
+package com.carona.models.requests;
+
+import com.carona.models.Carro;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -23,6 +25,6 @@ public class CriarUsuarioRequestDTO {
     private String papel; // Motorista ou Passageiro
 	
     @Valid()
-    private Carro veiculos; // Lista de veículos do usuário
+    private Carro veiculo; // Lista de veículos do usuário
     
 }

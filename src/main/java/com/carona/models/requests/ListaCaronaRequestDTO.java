@@ -1,5 +1,5 @@
 
-package com.carona.models;
+package com.carona.models.requests;
 
 import java.util.List;
 

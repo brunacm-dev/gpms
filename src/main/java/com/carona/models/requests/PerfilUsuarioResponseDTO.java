@@ -1,4 +1,4 @@
-package com.carona.models;
+package com.carona.models.requests;
 
 import lombok.Getter;
 import lombok.Setter;
