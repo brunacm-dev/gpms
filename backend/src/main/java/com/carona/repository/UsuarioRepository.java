@@ -1,10 +1,12 @@
 package com.carona.repository;
 
 import java.sql.Types;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.core.SqlParameter;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import com.carona.mappers.UsuarioCarroRowMapper;
 import com.carona.models.Usuario;
+import com.carona.models.Veiculo;
 
 @Repository
 public class UsuarioRepository {
@@ -37,32 +40,33 @@ public class UsuarioRepository {
 	    return (boolean) result.get("existe");
 	}
 
-	public void criarUsuario(String nome, String reputacao, String email, String senha, String papel, String marca, String modelo, String cor, String placa, String cnh) {
-	    SimpleJdbcCall call = new SimpleJdbcCall(jdbcTemplate)
-	        .withProcedureName("criar_usuario");
+	public void criarUsuario(String nome, String reputacao, String email, String senha) {
+	    String sql = "INSERT INTO usuarios(nome, reputacao, email, senha) VALUES (?, ?, ?, ?)";
+		jdbcTemplate.update(sql, nome, reputacao, email, senha);
+	}
 
-	    SqlParameterSource params = new MapSqlParameterSource()
-	    	    .addValue("p_nome", nome)
-	    	    .addValue("p_reputacao", reputacao)
-	    	    .addValue("p_email", email)
-	    	    .addValue("p_senha", senha)
-	    	    .addValue("p_papel", papel)
-	    	    .addValue("p_marca", marca)
-	    	    .addValue("p_modelo", modelo)
-	    	    .addValue("p_cor", cor)
-	    	    .addValue("p_placa", placa)
-	    	    .addValue("p_cnh", cnh);
+	public List<Veiculo> verVeiculos(String email){
+		String sql = "SELECT * FROM veiculos v join usuarios u on u.id_usuario = v.id_usuario where u.email = ?";
 
-	    	call.execute(params);
+		try {
+			return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Veiculo.class), new Object[] { email } );
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
 	}
 
 	public Usuario carregarUsuario(String email){
 		String sql = "SELECT * FROM usuarios WHERE email = ?";
 
 		try {
-			return jdbcTemplate.queryForObject(sql, new UsuarioCarroRowMapper(), new Object[] { email });
+			return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Usuario.class), new Object[] { email });
 		} catch (EmptyResultDataAccessException e) {
 			return null;
 		}
+	}
+
+	public void criarVeiculo(Integer id_usuario, String marca, String modelo, String cor, String placa, String cnh){
+		String sql = "INSERT INTO veiculos(id_usuario, marca, modelo, cor, placa, cnh) VALUES (?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sql, id_usuario, marca, modelo, cor, placa, cnh);
 	}
 }

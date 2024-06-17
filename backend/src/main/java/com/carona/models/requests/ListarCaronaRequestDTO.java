@@ -4,12 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class PedirCaronaRequestDTO {
-    private Integer idViagem;
-
+public class ListarCaronaRequestDTO {
     private Integer idPontoFixo;
-    private String email;
-
+    
     private String localPartida;
     private String localDestino;
+
+    private int quantidadePassageiros;
+    private String tipoEmbarque;
 }

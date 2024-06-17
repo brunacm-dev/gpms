@@ -1,14 +1,19 @@
 package com.carona.repository;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.carona.exceptions.ProcedureException;
+import com.carona.models.Veiculo;
+import com.carona.models.Viagem;
+import com.carona.models.requests.OferecerCaronaRequestDTO;
+import com.carona.models.requests.PedirCaronaRequestDTO;
+import com.carona.models.requests.ListarCaronaRequestDTO;
 
 import jakarta.annotation.Resource;
 
@@ -16,70 +21,97 @@ import jakarta.annotation.Resource;
 
 @Repository
 public class CaronaRepository {
-    
-    private static final String ERRO_QUERY = "QUERY RETORNOU SEM DADOS: ";
 
-    private static final String PROCEDURE_SELECT_CARONA = "{call VerPerfilUsuario(?)}";
-    private static final String PROCEDURE_INSERT_CARONA = "{call AtualizarPerfilUsuario(?, ?)}";
-    private static final String PROCEDURE_UPDATE_CARONA = "{call PedirCarona(?, ?)}";
-    private static final String PROCEDURE_DELETE_CARONA = "{call OferecerCarona(?, ?, ?, ?)}";
-    private static final String PROCEDURE_LIST_CARONA = "{call ListarCaronas()}";
-
-    /*@Resource(name = "jdbcTemplate")
+    @Resource(name = "jdbcTemplate")
     private JdbcTemplate jdbcTemplate;
-    
-    @Autowired
-    private "" mapperLista;
 
-    public "" select(int idUsuario) {
-        try {
-            Object[] params = new Object[] {idUsuario};
-            
-            return jdbcTemplate.queryForObject(PROCEDURE_SELECT_CARONA, new ""(), params);
-        } catch (EmptyResultDataAccessException e) {
-            return null;
-        }
+    public void oferecerCarona(Integer id_motorista, OferecerCaronaRequestDTO carona)
+    {
+        String sql = """
+            INSERT INTO viagens (
+                id_motorista,
+                id_veiculo,
+                local_partida, 
+                local_destino, 
+                data_partida, 
+                hora_partida, 
+                quantidade_passageiros, 
+                id_ponto_fixo
+            ) VALUES (
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?
+            )
+            """;
+
+		jdbcTemplate.update(
+            sql, 
+            id_motorista,
+            carona.getIdVeiculo(),
+            carona.getLocalPartida(),
+            carona.getLocalDestino(),
+            carona.getDataPartida(),
+            carona.getHoraPartida(),
+            carona.getQuantidadePassageiros(),
+            carona.getIdPontoFixo());
     }
 
-    public void cadastro(int idUsuario, String nome) {		      	
-        try {
-            Object[] params = new Object[] {idUsuario, nome};
+    public List<Viagem> listarCarona(ListarCaronaRequestDTO carona){
+        String sql = """
+            SELECT * FROM viagens WHERE
+            (
+            (local_partida like ? AND
+            local_destino like ?) OR
+            id_ponto_fixo = ?) AND
+            quantidade_passageiros = ? AND
+            data_partida BETWEEN CURDATE() AND ?
+        """;
 
-            jdbcTemplate.update(PROCEDURE_INSERT_CARONA, params);
-        } catch (EmptyResultDataAccessException e) {
-            String mensagem = ERRO_QUERY + PROCEDURE_INSERT_CARONA;
-            throw new ProcedureException(mensagem, e);
-        }
+		try {
+            LocalDate localDate = "imediato".equals(carona.getTipoEmbarque()) ? LocalDate.now() : LocalDate.parse("9999-01-01");
+            java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
+
+			return jdbcTemplate.query(
+                sql, 
+                new BeanPropertyRowMapper<>(Viagem.class), 
+                new Object[] {
+                    "%" + carona.getLocalPartida() + "%",
+                    "%" + carona.getLocalDestino() + "%",
+                    carona.getIdPontoFixo(),
+                    carona.getQuantidadePassageiros(),
+                    sqlDate
+                }
+            );
+		} catch (EmptyResultDataAccessException e) {
+			return null;
+		}
     }
 
-    public void update(int idUsuario, int idViagem) {		
-        try {
-            Object[] params = new Object[] {idUsuario, idViagem};
+    public void pedirCarona(Integer id_passageiro, PedirCaronaRequestDTO carona)
+    {
+        String sql = """
+            INSERT INTO viagens (
+                local_partida, 
+                local_destino, 
+                id_ponto_fixo
+            ) VALUES (
+                ?,
+                ?,
+                ?,
+                ?,
+                ?
+            )
+            """;
 
-            jdbcTemplate.update(PROCEDURE_UPDATE_CARONA, params);
-        } catch (EmptyResultDataAccessException e) {
-            String mensagem = ERRO_QUERY + PROCEDURE_UPDATE_CARONA;
-            throw new ProcedureException(mensagem, e);
-        }
+		jdbcTemplate.update(
+            sql, 
+            carona.getLocalPartida(),
+            carona.getLocalDestino(),
+            carona.getIdPontoFixo());
     }
-
-    public void delete(int idUsuario, int idViagem, int idVeiculo, int lugaresDisponiveis) {	
-        try {
-            Object[] params = new Object[] {idUsuario, idViagem, idVeiculo, lugaresDisponiveis};
-
-            jdbcTemplate.update(PROCEDURE_DELETE_CARONA, params);
-        } catch (EmptyResultDataAccessException e) {
-            String mensagem = ERRO_QUERY + PROCEDURE_DELETE_CARONA;
-            throw new ProcedureException(mensagem, e);
-        }
-    }
-
-    public List<""> list() {		
-         try {
-            return jdbcTemplate.queryForObject(PROCEDURE_LIST_CARONA, mapperLista);
-        } catch (EmptyResultDataAccessException e) {
-            List<""> lista = new ArrayList<>();
-            return lista;
-        }
-    }*/
 }

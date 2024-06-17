@@ -1,27 +1,19 @@
-package com.carona.models.requests;
+package com.carona.models;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class OferecerCaronaRequestDTO {
-    @NotNull(message = "campo nao pode estar vazio")
+public class Viagem {
+    private String idViagem;
     private String email;
-
-    @NotNull(message = "campo nao pode estar vazio")
     private String idVeiculo;
-
     private String localPartida;
     private String localDestino;
-    
-    @NotNull(message = "campo nao pode estar vazio")
     private String dataPartida;
-    @NotNull(message = "campo nao pode estar vazio")
     private String horaPartida;
-
-    @NotNull(message = "campo nao pode estar vazio")
     private Integer quantidadePassageiros;
-
     private Integer idPontoFixo;
+    private Integer idMotorista;
 }
