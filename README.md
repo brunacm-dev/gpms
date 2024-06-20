@@ -80,7 +80,7 @@ Este projeto tem como objetivo facilitar o transporte da comunidade acadêmica, 
 | **Orçamento** | **R$ 8.589,07**|
 
 ## Cronograma
-- [Gantt] (https://app.teamgantt.com/projects/gantt?ids=3916704)
+- [Gantt](https://app.teamgantt.com/projects/gantt?ids=3916704)
 
 ## Análise de Riscos
 - **Falta de tempo por problemas externos:** Prob.: 60%, Impacto: 40, Exposição: 36, Alta.
