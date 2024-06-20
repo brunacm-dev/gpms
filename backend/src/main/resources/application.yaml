@@ -1,0 +1,32 @@
+properties:
+  application:
+    titulo: "@project.artifactId@"
+    versao: "@project.version@"
+    descricao: "@project.description@"
+    
+springdoc:
+  packagesToScan: com.carona.controllers
+  swagger-ui:
+    path: /v1/swagger
+    enabled: false
+  api-docs:
+    path: /v1/swagger.json
+    enabled: true
+
+server:
+  servlet:
+    context-path: /caronaUff
+       
+spring:
+   jackson:
+      default-property-inclusion: NON_NULL
+  
+database:
+  eventos:
+    driver: com.mysql.cj.jdbc.Driver
+    connectionString: jdbc:mysql://${database.eventos.database_server}:${database.eventos.database_port}/eventos?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 5akG-,i+4Vi]B
+    autocommit: true
+    database_server: localhost
+    database_port: 3306
