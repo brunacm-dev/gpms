@@ -69,4 +69,5 @@ public class UsuarioRepository {
 		String sql = "INSERT INTO veiculos(id_usuario, marca, modelo, cor, placa, cnh) VALUES (?, ?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sql, id_usuario, marca, modelo, cor, placa, cnh);
 	}
+
 }

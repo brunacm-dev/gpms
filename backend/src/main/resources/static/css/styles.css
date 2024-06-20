@@ -152,3 +152,22 @@ body {
     background-color: var(--bs-primary);
     color: var(--bs-light);
 }
+
+.container-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.mapouter {
+    position: relative;
+    text-align: right;
+    height: 560px;
+    width: 820px;
+}
+.gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 560px;
+    width: 820px;
+}

@@ -15,14 +15,18 @@ public class PageController {
 
     @GetMapping("home")
     public String home(Model model) {
-        Usuario usuario = usuarioService.carregarUsuario("antoniovinicius1801@gmail.com");
+        Usuario usuario = usuarioService.carregarUsuario("bruna@gmail.com");
         model.addAttribute("username", usuario.getNome());
         return "home";
     }
-
     @GetMapping("novo-cadastro")
     public String cadastro() {
         return "novo-cadastro";
     }
+
+//    @GetMapping("pedir-carona")
+//    public String pedirCarona() {
+//        return "pedir-carona";
+//    }
 
 }

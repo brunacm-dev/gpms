@@ -23,11 +23,11 @@ public class LoginController {
 
     @PostMapping(value="/login")
     public ResponseEntity<?> login(
-    		
-		@RequestBody UsuarioLoginDTO usuario
-		
-		) {
-	
+
+            @RequestBody UsuarioLoginDTO usuario
+
+    ) {
+
         boolean autenticado = loginService.autenticar(usuario);
         if (autenticado) {
             return new ResponseEntity<>(HttpStatus.OK);
@@ -36,3 +36,4 @@ public class LoginController {
         }
     }
 }
+

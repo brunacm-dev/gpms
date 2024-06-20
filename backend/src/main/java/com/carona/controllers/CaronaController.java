@@ -37,7 +37,7 @@ public class CaronaController {
         return caronaService.listarCarona(pedirCaronaRequestDTO);
     }
 
-    @PostMapping("/pedir")
+    @PostMapping("/pedir-carona")
     public String pedirCarona(
         @RequestBody PedirCaronaRequestDTO pedirCaronaRequestDTO
     ) {

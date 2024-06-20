@@ -22,10 +22,10 @@
         <div class="col-md-6 right-side">
             <div class="login-container">
                 <h2 class="text-center mb-4 fs-2">Login</h2>
-                <form>
+                <form th:action="@{/login}" method="post">
                     <div class="mb-3">
-                        <label for="username" class="form-label">Usuário:</label>
-                        <input type="text" class="form-control" id="username" placeholder="Digite seu usuário">
+                        <label for="username" class="form-label">Email:</label>
+                        <input type="text" class="form-control" id="username" placeholder="Digite seu email">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Senha:</label>
@@ -45,6 +45,8 @@
                 </form>
             </div>
         </div>
+    </div>
+</div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
                 crossorigin="anonymous"></script>

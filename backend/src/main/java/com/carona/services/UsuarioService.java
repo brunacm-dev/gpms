@@ -57,4 +57,18 @@ public class UsuarioService {
 
         return usuarioRepository.carregarUsuario(email);
     }
+
+    public Usuario validarUsuario(String email, String password) {
+        if (!usuarioRepository.emailExiste(email)) {
+            return null;
+        }
+
+        Usuario usuario = usuarioRepository.carregarUsuario(email);
+
+        if (usuario.getSenha().equals(password)) {
+            return usuario;
+        } else {
+            return null;
+        }
+    }
 }
