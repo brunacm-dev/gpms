@@ -21,9 +21,9 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public void criarUsuario(CriarUsuarioRequestDTO usuario) {
-    	
-    	log.debug("criarUsuario() INICIO : criando usuario usuario={}",usuario);
-    	
+
+        log.debug("criarUsuario() INICIO : criando usuario usuario={}",usuario);
+
         if (usuarioRepository.emailExiste(usuario.getEmail())) {
             throw new RuntimeException("Email já cadastrado");
         }

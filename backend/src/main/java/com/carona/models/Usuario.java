@@ -10,5 +10,5 @@ public class Usuario {
     private Integer idUsuario;
     private String nome;
     private String email;
-    private String papel;
+    private String senha;
 }

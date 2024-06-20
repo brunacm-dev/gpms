@@ -19,4 +19,6 @@ public class CriarUsuarioRequestDTO {
 	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "A senha deve ter pelo menos 8 caracteres e incluir uma letra minúscula, uma letra maiúscula, um número e um caractere especial.")
 	@NotNull(message = "campo nao pode estar vazio")
     private String senha;
+
+	private Boolean motorista;
 }

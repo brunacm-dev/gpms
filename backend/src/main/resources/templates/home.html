@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ride UFF</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg py-3 fs-5 text-center">
+    <div class="container-fluid">
+        <a class="navbar-brand fs-3 p-3" href="#">RideUFF | </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/pages/home}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/pages/sobre}">Sobre</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Opções do Usuário
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" th:href="@{/pages/atualizar-cadastro}">Ver Perfil</a></li>
+                        <li><a class="dropdown-item" th:href="@{/pages/pedir-carona}">Pedir Carona</a></li>
+                        <li><a class="dropdown-item" th:href="@{/pages/oferecer-carona}">Oferecer Carona</a></li>
+                        <li><a class="dropdown-item" th:href="@{/pages/listar-caronas}">Listar Caronas</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/pages/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="container-inner">
+        <div class="card profile text-start">
+            <h2>Welcome, <span th:text="${username}">usuário</span></h2>
+            <div class="profile-data">
+                <p class="profile-nome"><strong>Nome:</strong> <span th:text="${nome}">Fulano</span></p>
+                <p class="profile-matricula"><strong>Matrícula:</strong> <span th:text="${matricula}">789ABC</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid text-center">
+    <div class="row align-items-center">
+        <div class="col-md-6 col-lg-3">
+            <div class="container-inner">
+                <div class="card option">
+                    <a th:href="@{/pages/pedir-carona}" class="btn btn-card">Pedir Carona</a>
+                    <p>Encontre uma carona rapidamente</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="container-inner">
+                <div class="card option">
+                    <a th:href="@{/pages/oferecer-carona}" class="btn btn-card">Oferecer Carona</a>
+                    <p>Compartilhe sua rota e ajude outros usuários</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="container-inner">
+                <div class="card option">
+                    <a th:href="@{/pages/listar-caronas}" class="btn btn-card">Listar Caronas</a>
+                    <p>Visualize caronas disponíveis e passadas</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="container-inner">
+                <div class="card option">
+                    <a th:href="@{/pages/atualizar-cadastro}" class="btn btn-card">Ver Perfil</a>
+                    <p>Mantenha suas informações pessoais atualizadas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
